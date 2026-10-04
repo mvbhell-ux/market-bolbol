@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173c2d" />
+    <meta name="description" content="ماركت بلبل — اطلب احتياجاتك اليومية والقهوة المحمصة بسهولة." />
+    <title>ماركت بلبل</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="ماركت بلبل - الرئيسية">
+        <span class="brand-mark" aria-hidden="true">م</span>
+        <span><strong>ماركت بلبل</strong><small>كل اللي بتحبه.. في مكان واحد</small></span>
+      </a>
+      <button id="installBtn" class="install-btn hidden" type="button">تثبيت التطبيق</button>
+      <button id="cartButton" class="cart-button" type="button" aria-label="فتح سلة التسوق">
+        <span aria-hidden="true">🛒</span>
+        <span>السلة</span>
+        <span id="cartCount" class="cart-count">0</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">أهلاً بيك في</p>
+          <h1>طلبك اليومي<br /><span>بقى أسهل.</span></h1>
+          <p class="hero-description">اختار احتياجات البيت، والقهوة الطازة من محمصتنا، وحطهم في السلة.</p>
+          <a class="hero-link" href="#products">ابدأ التسوق <span aria-hidden="true">←</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <span class="hero-bean bean-one">☕</span>
+          <span class="hero-bean bean-two">🥜</span>
+          <span class="hero-bag">🛍️</span>
+          <span class="hero-bean bean-three">🌿</span>
+        </div>
+        <div class="hero-note"><span aria-hidden="true">✦</span> تحميص طازة كل يوم</div>
+      </section>
+
+      <section class="shop-section" id="products">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">تسوق على مزاجك</p>
+            <h2>اختار من الأقسام</h2>
+          </div>
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="بتدور على إيه؟" aria-label="ابحث عن منتج" />
+          </label>
+        </div>
+
+        <nav class="category-list" aria-label="أقسام المنتجات">
+          <button class="category-button active" data-category="all" type="button">كل المنتجات</button>
+          <button class="category-button" data-category="market" type="button">🧺 الماركت</button>
+          <button class="category-button" data-category="roastery" type="button">☕ المحمصة</button>
+          <button class="category-button" data-category="adult" type="button">🔞 سجائر للبالغين</button>
+        </nav>
+        <p class="age-note">منتجات التبغ للبالغين فقط، وتُباع وفق القوانين المحلية.</p>
+
+        <div id="productGrid" class="product-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="install-hint">
+        <span class="install-hint-icon" aria-hidden="true">📲</span>
+        <div>
+          <strong>خلي المتجر على موبايلك</strong>
+          <p>من قائمة المتصفح اختار «إضافة إلى الشاشة الرئيسية» عشان تفتحه زي أي تطبيق.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="currentYear"></span> ماركت بلبل · الأسعار المعروضة تجريبية وقابلة للتعديل</footer>
+
+    <dialog id="cartDialog" class="app-dialog cart-dialog">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">مشترياتك</p><h2>سلة التسوق</h2></div>
+        <button class="close-dialog" data-close="cartDialog" type="button" aria-label="إغلاق">×</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-total"><span>الإجمالي</span><strong id="cartTotal">٠ ج.م</strong></div>
+      <form id="checkoutForm" class="checkout-form">
+        <label>اسمك<input name="customerName" autocomplete="name" required maxlength="80" placeholder="الاسم" /></label>
+        <label>رقم موبايلك<input name="customerPhone" type="tel" autocomplete="tel" required maxlength="20" placeholder="رقم التواصل" /></label>
+        <label>عنوان التوصيل<textarea name="customerAddress" autocomplete="street-address" required maxlength="250" rows="2" placeholder="المنطقة والشارع ورقم البيت"></textarea></label>
+        <button id="checkoutButton" class="primary-button" type="submit">اطلب عبر واتساب</button>
+        <p id="checkoutMessage" class="checkout-message" role="status"></p>
+      </form>
+    </dialog>
+
+    <dialog id="ageDialog" class="app-dialog age-dialog">
+      <div class="age-symbol" aria-hidden="true">18+</div>
+      <p class="eyebrow">تنبيه مهم</p>
+      <h2>منتجات للبالغين فقط</h2>
+      <p>هل تؤكد أن عمرك يوافق السن القانوني لشراء منتجات التبغ في بلدك؟</p>
+      <div class="age-actions">
+        <button id="confirmAgeBtn" class="primary-button" type="button">نعم، أؤكد</button>
+        <button id="cancelAgeBtn" class="quiet-button" type="button">لا، رجوع</button>
+      </div>
+      <small>يرجى الالتزام بالقوانين المحلية. لا تُباع منتجات التبغ للقاصرين.</small>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

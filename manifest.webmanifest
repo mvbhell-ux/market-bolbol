@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "ماركت بلبل",
+  "short_name": "ماركت بلبل",
+  "description": "ماركت بلبل — منتجات البيت والقهوة الطازة.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f6ef",
+  "theme_color": "#173c2d",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
